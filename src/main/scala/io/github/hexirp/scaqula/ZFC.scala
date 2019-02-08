@@ -2,8 +2,8 @@ package io.github.hexirp.scaqula
 
 /** [[ZFC]] は、ZFC 集合論の Scala での表現を行う。
   *
-  * Set は集合の型である。Elem は Set -> Set -> Type というカインドを持たせたかったが、出来ないので
-  * 代わりに forall A B : Type, A <\: Set -> B <\: Set -> Type という風に部分型関係で表現する。
+  * ここで集合とは [[ZFC.ZfcModel.Set]] の部分型である型とする。
+  * 帰属関係は集合の上を渡る二項述語 [[ZFC.ZfcModel.Elem]] であるとする。
   *
   */
 object ZFC {
@@ -21,7 +21,7 @@ object ZFC {
     def extension[A <: Set, B <: Set] : ExtensionalEquality[A, B] => A =:= B
 
     trait IsEmptySet[A <: Set] {
-      def notInclude[X <: Set] : Elem[X, A] => Nothing
+      def isEmptySet[X <: Set] : Elem[X, A] => Nothing
     }
 
     trait EmptySet {
