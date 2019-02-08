@@ -20,6 +20,17 @@ object ZFC {
 
     def extension[A <: Set, B <: Set] : ExtensionalEquality[A, B] => A =:= B
 
+    trait IsEmptySet[A <: Set] {
+      def notInclude[X <: Set] : Elem[X, A] => Nothing
+    }
+
+    trait EmptySet {
+      type A <: Set
+      def ev : IsEmptySet[A]
+    }
+
+    def empty_set : EmptySet
+
   }
 
 }
