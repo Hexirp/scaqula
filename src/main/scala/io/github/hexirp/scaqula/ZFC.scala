@@ -13,6 +13,8 @@ class ZFC {
     type Set
     type Elem[_ <: Set, _ <: Set]
 
+    def extension[A <: Set, B <: Set]() : Unit = ()
+
   }
 
 }
