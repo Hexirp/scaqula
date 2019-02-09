@@ -25,7 +25,8 @@ object ZFC {
     def extension[A <: Set, B <: Set] : ExtensionalEquality[A, B] => A =:= B
 
     trait IsEmptySet[A <: Set] {
-      def isEmptySet[X <: Set] : Elem[X, A] => Nothing
+      def left[X <: Set] : Elem[X, A] => Nothing
+      def right[X <: Set] : Nothing => Elem[X, A] = x => x
     }
 
     trait EmptySet {
@@ -34,6 +35,18 @@ object ZFC {
     }
 
     def empty_set : EmptySet
+
+    trait IsPairSet[A <: Set, X <: Set, Y <: Set] {
+      def left[Z <: Set] : Elem[Z, A] => Either[Z =:= X, Z =:= Y]
+      def right[Z <: Set] : Either[Z =:= X, Z =:= Y] => Elem[Z, A]
+    }
+
+    trait PairSet[X <: Set, Y <: Set] {
+      type A <: Set
+      def ev : IsPairSet[A, X, Y]
+    }
+
+    def pair_set[X <: Set, Y <: Set] : PairSet[X, Y]
 
   }
 
