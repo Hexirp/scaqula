@@ -36,6 +36,8 @@ object ZFC {
 
     def empty_set : EmptySet
 
+    type Empty = EmptySet#A
+
     trait IsPairSet[A <: Set, X <: Set, Y <: Set] {
       def left[Z <: Set] : Elem[Z, A] => Either[Z =:= X, Z =:= Y]
       def right[Z <: Set] : Either[Z =:= X, Z =:= Y] => Elem[Z, A]
