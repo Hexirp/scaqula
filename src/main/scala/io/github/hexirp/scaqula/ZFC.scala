@@ -76,6 +76,18 @@ object ZFC {
 
     type SmallCup[X <: Set, Y <: Set] = BigCup[Pairing[X, Y]]
 
+    trait IsInfinitySet[A <: Set] {
+      def zero : Elem[Empty, A]
+      def succ[X <: Set] : Elem[X, A] => Elem[SmallCup[X,Singleton[X]], A]
+    }
+
+    trait InfinitySet {
+      type A <: Set
+      def ev : IsInfinitySet[A]
+    }
+
+    def infinity_set : InfinitySet
+
   }
 
 }
