@@ -88,6 +88,22 @@ object ZFC {
 
     def infinity_set : InfinitySet
 
+    trait Subset[A <: Set, B <: Set] {
+      def include[X <: Set] : Elem[X, A] => Elem[X, B]
+    }
+
+    trait IsPowerSet[A <: Set, X <: Set] {
+      def left[Y <: Set] : Elem[Y, A] => Subset[Y, X]
+      def right[Y <: Set] : Subset[Y, X] => Elem[Y, A]
+    }
+
+    trait PowerSet[X <: Set] {
+      type A <: Set
+      def ev : IsPowerSet[A, X]
+    }
+
+    def power_set[X <: Set] : PowerSet[X]
+
   }
 
 }
