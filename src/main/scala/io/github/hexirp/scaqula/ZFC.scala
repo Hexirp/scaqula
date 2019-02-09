@@ -48,6 +48,10 @@ object ZFC {
 
     def pair_set[X <: Set, Y <: Set] : PairSet[X, Y]
 
+    type Pairing[X <: Set, Y <: Set] = PairSet[X, Y]#A
+
+    type Singleton[X <: Set] = PairSet[X, X]#A
+
     trait ElemElem[A <: Set, C <: Set] {
       type B <: Set
       def left : Elem[A, B]
@@ -65,6 +69,10 @@ object ZFC {
     }
 
     def union_set[X <: Set] : UnionSet[X]
+
+    type BigCup[X <: Set] = UnionSet[X]#A
+
+    type SmallCup[X <: Set, Y <: Set] = BigCup[Pairing[X, Y]]
 
   }
 
