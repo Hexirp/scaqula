@@ -48,6 +48,24 @@ object ZFC {
 
     def pair_set[X <: Set, Y <: Set] : PairSet[X, Y]
 
+    trait ElemElem[A <: Set, C <: Set] {
+      type B <: Set
+      def left : Elem[A, B]
+      def right : Elem[B, C]
+    }
+
+    trait IsUnionSet[A <: Set, X <: Set] {
+      def left[Y <: Set] : Elem[Y, A] => ElemElem[Y, X]
+      def right[Y <: Set] : ElemElem[Y, X] => Elem[Y, A]
+    }
+
+    trait UnionSet[X <: Set] {
+      type A <: Set
+      def ev : IsUnionSet[A, X]
+    }
+
+    def union_set[X <: Set] : UnionSet[X]
+
   }
 
 }
