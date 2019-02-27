@@ -9,7 +9,7 @@ package io.github.hexirp.scaqula
   * {{{Set <:< Set}}} が正しいゆえに {{{Set}}} も集合であることになってしまうが、
   * そのことはモデルの内部からでは意味を持たない。
   *
-  * [[https://ja.wikipedia.org/wiki/公理的集合論]] を参考にしているが、
+  * [[https://ja.wikipedia.org/w/index.php?title=公理的集合論&oldid=61603666]] を参考にしているが、
   * 数学の公理系に著作権は存在しないと思われるためライセンスには違反しない。
   *
   */
