@@ -91,6 +91,8 @@ object ZFC {
 
     def infinity_set : InfinitySet
 
+    type Omega = InfinitySet#A
+
     trait Subset[A <: Set, B <: Set] {
       def include[X <: Set] : Elem[X, A] => Elem[X, B]
     }
@@ -106,6 +108,8 @@ object ZFC {
     }
 
     def power_set[X <: Set] : PowerSet[X]
+
+    type Power[X <: Set] = PowerSet[X]#A
 
   }
 
